@@ -1,0 +1,47 @@
+1. Your are not allowed to use ORMs in this project.
+
+2. A simple command line interface
+will not provide you less marks neither the development of a web app will provide more marks.
+
+3. Regarding the marks distribution.
+This is the distribution of the evaluation provided in the project proposal with some comments/explanations added:
+
+    A report that includes the following:
+
+        (10%) The DBMS and the programming languages that you have used in your implementation of the application.
+
+        (10%) A list with the DDLs used to create your database (Include here some comments
+        if you have changed your relational model after seeing the feedback from the deliverable #1.
+        Explain what you changed and why.)
+
+        (5%) Specific steps to guide someone to install your applications.
+        (Even if you didn't build an application,
+        describe steps what another person need to take to have what you build running)
+
+    (15%) Your SQL code that supports all the functionalities in your application
+    ( include here triggers that you may have defined, code used to populate your relations and the code for answering all the queries described in the project)
+
+    (20%) The code necessary to implement all the user interfaces.
+    (The use of basic interfaces is acceptable but you are encouraged to design more sophisticated ones if you can).
+    (In this case, if you are using a command line interface,
+    you will need to provide the code that each different user would
+    need for accessing your database considering his specific requirements.
+    This means that you will need to provide the code that a database administrator, a host or guest and a branch employee would need to make use of your database according to their requirements. Provide examples of use for the different cases.)
+
+
+
+    For the administrator you can just give some examples of tasks he would be able to do. That can be, for instance, the creation of roles or the assignment of privileges.
+   - For the 10 queries that are in project, you will need to provide the code for answering them (you can provide this in a separate file), and you should also include the answers that you obtained in your report.
+   - Please, report by email (include me and all group members) if an element of the group didn't participate in the work for the deliverable #2.
+
+
+   Please submit a .zip file that includes the following:
+1. A report that includes the following:
+a. (10%) The DBMS and the programming languages that you have used in your
+implementation of the application.
+b. (10%) A list with the DDLs used to create your database
+c. (5%) Specific steps to guide someone to install your applications.
+2. (15%) Your SQL code that supports all the functionalities in your application
+3. (20%) The code necessary to implement all the user interfaces. (The use of basic interfaces is
+acceptable but you are encouraged to design more sophisticated ones if you can).
+Please upload your deliverables on Brightspace by the due dates stated at the beginning of this document. Each group will be allocated a 20-minute slot to present their project on the 30th of March 2020 (to be confirmed). Please come with your application installed and running on your laptop for your project presentation.
