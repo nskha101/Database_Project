@@ -10,7 +10,7 @@ def home():
 
 try:
     connection = psycopg2.connect(user = "yren020",
-                                  password = "RYb15640881020-",
+                                  password = "",
                                   host = "web0.eecs.uottawa.ca",
                                   port = "15432",
                                   database = "yren020")
@@ -32,7 +32,3 @@ finally:
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
-
-
-
-
