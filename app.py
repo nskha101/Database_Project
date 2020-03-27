@@ -1,10 +1,10 @@
-from flask import Flask
+# from flask import Flask
 import psycopg2
 
-app = Flask(__name__)
-@app.route("/")
-def home():
-    return "Hello, Flask!"
+# app = Flask(__name__)
+# @app.route("/")
+# def home():
+#     return "Hello, Flask!"
 
 
 
