@@ -25,16 +25,12 @@ def open_connection():
 def query(query):
    record = cursor.fetchone()
    print("You are connected to - ", record,"\n")
-    
-   cursor.execute("SELECT * from bnb")
-   print("Selecting rows from bnb table using cursor.fetchall")
-   bnb = cursor.fetchall() 
-   
-   print("Print each row and it's columns values")
-   for row in bnb:
-     for item in row:
-         print(row[item])
-    cursor.close()
+   cursour = conn.cursor()
+   cursor.execute(query)
+   conn.commit()
+   fetched = cursor.fetchall()
+   print(fetched)
+   cursor.close()
    
 
 def uploadlisting(name, email, location, duration, maxsize, language, description, rules, cost, availability, contact):
