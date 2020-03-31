@@ -14,12 +14,18 @@ def home():
 def admin():
    return render_template('admin.html')
 
+@app.route('/guest')
+def guest():
+   return render_template('guest.html')
 @app.route('/login',methods = ['POST', 'GET'])
 def login():
    if request.method == 'POST':
+
       user = request.form['un']
       password = request.form['pw']
+      
       if user.__eq__('admin') and password.__eq__('ad123'):
+      
          return redirect(url_for('admin'))
    else:
       user = request.args.get('un')
