@@ -48,9 +48,18 @@ def availability(name):
     query = "SELECT availablity, cost FROM bnb WHERE name = " + name
     cursor.execute(query)
     availability = cursor.fetchall()
+    string = ""
     for row in availability:
-        print("availability = ", row[0])
-        print("cost = ", row[1], "/n")
+       string += ("availability = ", row[0])+ "," + ("cost = ", row[1], "/n")
+
+def occupancyrate():
+    cursor.execute("SELECT duration FROM bnb")
+    occupancy = duration.fetchall()
+    rate=0
+    for row in occupancy:
+        rate += row[0]/365
+        count += 1
+    return rate / len(occupancy)
     
 def close():
    if(connection):
