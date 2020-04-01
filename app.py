@@ -1,12 +1,13 @@
 import psycopg2
 import random
-def open_connection():
- try:
-   connection = psycopg2.connect(user = "nskha101",
+connection = psycopg2.connect(user = "nskha101",
                                   password = "Nithrocksu25",
                                   host = "web0.eecs.uottawa.ca",
                                   port = "15432",
                                   database = "nskha101")
+def open_connection():
+
+ try:
 
    cursor = connection.cursor()
    # Print PostgreSQL Connection properties
@@ -23,45 +24,58 @@ def open_connection():
     #closing database connection.
    
 def query(query):
-   record = cursor.fetchone()
-   print("You are connected to - ", record,"\n")
-   cursour = conn.cursor()
-   cursor.execute(query)
-   conn.commit()
-   fetched = cursor.fetchall()
-   print(fetched)
+   try: 
+        cursor = connection.cursor()
+        connection.cursor().execute("SET SCHEMA '{}'".format('airbnb'))
+        cursor.execute(query)
+        connection.commit()
+        fetched = cursor.fetchall()
+   except:
+       pass 
+   
    cursor.close()
    
 
 def uploadlisting(name, email, location, duration, maxsize, language, description, rules, cost, availability, contact):
+    #test query, note the type values. uploadlisting("testbnb", "test@test.com", "ottawa", 365, 2, "english", "fun place", "no pets", "300", True, "jeff")
+
     try:
-        cursor = conn.cursor()
-        bnbid=random.randint(1,10000)+name
-        cursor.execute("INSERT INTO bnb (bnbid, email, name, location, duration, maxsize, langugage, description, rules, cost, availability, contact) VALUES(%s, %s, %s)", (bnbid, email, name, location, duration, maxsize, language, description, rules, cost, availability, contact))
-        conn.commit()
+        cursor = connection.cursor()
+        connection.cursor().execute("SET SCHEMA '{}'".format('airbnb'))
+        bnbid=random.randint(1,10000)
+        print(bnbid)
+        cursor.execute("INSERT INTO bnb (bnbid, email, name, location, duration, maxsize, Language, description, rules, cost, availability, contact) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (bnbid, email, name, location, duration, maxsize, [language], description, rules, cost, availability, contact))
+        connection.commit()
         cursor.close()
     except (Exception, psycopg2.Error) as error :
-        print("exception, yo")
+        print("exception - " , error)
 
 def availability(name):
-    cursor = conn.cursor()
-    query = "SELECT availablity, cost FROM bnb WHERE name = " + name
+    cursor = connection.cursor()
+    connection.cursor().execute("SET SCHEMA '{}'".format('airbnb'))
+    query = "SELECT availability, cost FROM bnb WHERE name = '{}'".format(name)
     cursor.execute(query)
     availability = cursor.fetchall()
     string = ""
     for row in availability:
-       string += ("availability = ", row[0])+ "," + ("cost = ", row[1], "/n")
+       string += "availability = {}".format(row[0]) + " , " + "cost = {}".format( row[1])
+    print(string) 
+    return string
 
-def occupancyrate():
-    cursor.execute("SELECT duration FROM bnb")
-    occupancy = duration.fetchall()
-    rate=0
-    for row in occupancy:
-        rate += row[0]/365
-        count += 1
-    return rate / len(occupancy)
-    
+def occupancyrate(bnbid):
+    cursor = connection.cursor()
+    connection.cursor().execute("SET SCHEMA '{}'".format('airbnb'))
+    query = "SELECT duration FROM bnb WHERE bnbid = '{}'".format(bnbid)
+    cursor.execute(query)
+    duration = cursor.fetchone()
+    return "occupancy rate: {:.2f}%".format((duration[0]/365)*100)
+
 def close():
    if(connection):
       connection.close()
       print("PostgreSQL connection is closed")
+
+if __name__ == '__main__':
+    open_connection()
+    #uploadlisting("test2bnb", "test2@test.com", "ottawa", 365, 2, "english", "fun place", "no pets", "300", True, "jeff")
+    print(occupancyrate(962))
