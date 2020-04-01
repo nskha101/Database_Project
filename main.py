@@ -54,6 +54,8 @@ def login():
             return redirect(url_for("guest_name", name=user))
          elif user.__eq__("host") and password.__eq__('host123') and option == 'host':
             return redirect(url_for("host_name",name=user))
+         elif user.__eq__("employee") and password.__eq__('em123') and option == 'employee' :
+            return redirect(url_for("employee_name", name=user))   
          else:
             error='Invalid username or password, please try again!'
       return render_template('login.html',error=error)
