@@ -75,7 +75,3 @@ def close():
       connection.close()
       print("PostgreSQL connection is closed")
 
-if __name__ == '__main__':
-    open_connection()
-    #uploadlisting("test2bnb", "test2@test.com", "ottawa", 365, 2, "english", "fun place", "no pets", "300", True, "jeff")
-    print(occupancyrate(962))
