@@ -10,17 +10,12 @@
 
 <body>
     <h1>Welcome back, host {{ name }}! </h1>
-    <!-- <p><input type="text" name="search_box" size="30px" placeholder="Search for an Airbnb" name="Search_box"> -->
+    <form action="{{url_for('update_info')}}">
 
-    <!-- </p> -->
-    <!-- <label for="search_box">search here</label> -->
+    <input type="submit" name="personal info" value="personal info">
 
-
+    </form>
 </body>
-<!-- guest check availability, name of bnb 
-    display a table,  -->
-
-
 
 
 </html>

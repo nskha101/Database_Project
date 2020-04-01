@@ -7,14 +7,13 @@
 
     </head>
     <body>
-        <form action=""></form>
-        <h1>Welcome back, guest {{ name }}! </h1>
-        <p><input type="text" name="search_box"  size="30px" placeholder="Search for an Airbnb" name="Search_box">
-
+        <form action="http://localhost:5000/search_result">
+        <h1>Welcome back, {{ name }}! </h1>
+        <p><input type="text" name="search_box"  size="30px" placeholder="Search for an Airbnb by location" name="Search_box">
+            <input type="submit" name="search" value="Search">
         </p>
         <!-- <label for="search_box">search here</label> -->
-
-
+        </form>
     </body>
     <!-- guest check availability, name of bnb 
     display a table,  -->
