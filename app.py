@@ -1,10 +1,24 @@
 import psycopg2
 import random
-connection = psycopg2.connect(user = "nskha101",
-                                  password = "Nithrocksu25",
-                                  host = "web0.eecs.uottawa.ca",
-                                  port = "15432",
-                                  database = "nskha101")
+from configparser import ConfigParser
+
+
+def config(filename='database.ini', section='postgresql'):
+    parser = ConfigParser()
+    parser.read(filename)
+    db = {}
+    if parser.has_section(section):
+        params = parser.items(section)
+        for param in params:
+            db[param[0]] = param[1]
+    else:
+        raise Exception('Section {0} not found in the {1} file'.format(section, filename))
+ 
+    return db
+
+config = config()
+connection = psycopg2.connect(**config)
+
 def open_connection():
 
  try:
