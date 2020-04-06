@@ -44,9 +44,11 @@ def query(query):
         cursor.execute(query)
         connection.commit()
         fetched = cursor.fetchall()
-   except:
-       pass 
+        return fetched
+   except (Exception) as error:
+       return error
    
+
    cursor.close()
    
 
