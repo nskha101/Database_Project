@@ -121,12 +121,12 @@ def searchbnb(searchtype, searchparam):
     try:
         cursor = connection.cursor()
         connection.cursor().execute("SET SCHEMA '{}'".format('airbnb'))
-        cursor.execute("SELECT * FROM BNB WHERE {} = '{}'".format(searchtype, searchparam))
+        cursor.execute("SELECT * FROM BNB WHERE {} = '{}".format(searchtype, searchparam))
         availability = cursor.fetchall()
         return availability
     except (Exception) as error :
         print("exception - " , error)
 
-if __name__ == "__main__":
-        #edithost("hosttest@test.com", "testchange", "test", "middle", "english", "Male", "123456", "1231231234", "doe doe doe st.", "123456789", "1920-01-01", "962", "1234", "1234")
-        print(searchbnb("location", "markham"))
+# if __name__ == "__main__":
+#         #edithost("hosttest@test.com", "testchange", "test", "middle", "english", "Male", "123456", "1231231234", "doe doe doe st.", "123456789", "1920-01-01", "962", "1234", "1234")
+#         print(searchbnb("location", "markham"))
