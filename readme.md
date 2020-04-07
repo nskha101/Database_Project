@@ -1,5 +1,5 @@
 How to run the app:
-Make sure you have the python3 install on your machine
+Make sure you have the python 3 and pip package installed on your machine 
 
 
 
@@ -15,5 +15,14 @@ Run the following scripts to setup:
 
 
 On Windows:
+
+Open command line (win+R and type cmd):
+
+Run the following scripts to setup:
+	pip install -r requirements.txt
+
+	python main.py
+
+
 
 

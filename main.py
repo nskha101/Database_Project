@@ -1,27 +1,61 @@
 
 from flask import Flask, redirect, url_for, request,render_template
 import psycopg2
-from app import *  
+from scripts import *  
 
 
 app = Flask(__name__)
+h_info ={}
+
 
 @app.route("/")
 def home():
    return render_template("login.html")
 
+ 
+@app.route('/process_query',methods =['POST'])
+def process_query():
+   q = request.form['sql_command']
+   return str(query(q))
+
 @app.route('/admin')
 def admin():
+
    return render_template('admin.html')
 
 @app.route('/host/<name>')
 def host_name(name):
    return render_template('host.html',name=name)
 
+
+@app.route('/view_bnbs')
+def view_bnbs():
+
+   return 
+   # return a table of bnbids/
+
+# advanture list, exterpeice list, stay list
+@app.route('/view_profile' , methods=['POST'])
+def view_profile():
+   global h_info 
+   if (h_info == {} or len(h_info)== 1) and len(request.form)!=1:
+      h_info = request.form
+   elif h_info  != request.form:
+      h_info = request.form
+   try:
+      return render_template('profile.html',info=h_info)
+   except Exception as e:
+      return "please update your profile first"
+
+
+
 @app.route('/update_info')
 def update_info():
-   return render_template('host_info.html')
+   return render_template("host_info.html")
 
+@app.route('/update_bnb')
+def update_bnb():
+   return render_template('host_upload.html')
 
 @app.route('/guest/<name>')
 def guest_name(name):
@@ -32,11 +66,13 @@ def guest_name(name):
 def employee_name(name):
    return render_template('employee.html',name=name)
 
-@app.route('/result')
-def result():
-   if request.method.__eq__('POST'):
-      result = request.form
-      return render_template('search_result.html',result=result)
+@app.route('/search_result' , methods=['POST','GET'])
+def search_result():
+   # 
+   search_param = request.form['search_box']
+   search_type = request.form['search_by']
+
+   return str(searchbnb(search_type,search_param))
 
 @app.route('/login',methods = ['POST','GET'])
 def login():
@@ -48,7 +84,7 @@ def login():
          user = request.form['un']
          password = request.form['pw']
          option = request.form['options']
-         if user.__eq__('admin') and password.__eq__('ad123'):
+         if user.__eq__('admin') and password.__eq__('ad123') and option == 'admin':
             return redirect(url_for('admin'))
          elif user.__eq__("guest") and password.__eq__('guest123') and option == 'guest' :
             return redirect(url_for("guest_name", name=user))

@@ -7,13 +7,34 @@
 
     </head>
     <body>
-        <form action="http://localhost:5000/search_result">
         <h1>Welcome back, {{ name }}! </h1>
-        <p><input type="text" name="search_box"  size="30px" placeholder="Search for an Airbnb by location" name="Search_box">
+        <p></p>
+        <form action="">
+            <p>
+                my email
+                <input type="email" name ='my email' placeholder="guest@example.com">
+                <input type="submit" name="save" value="save">
+            </p>
+        </form>
+        <!-- location,name,bnbid,maxsize,cost -->
+
+        <form action="{{url_for('search_result')}}" method="POST">
+        
+        <p>
+            <input type="text" name="search_box" size="30px" placeholder="Search for an Airbnb ">
+            <label for="search_by">Search by:</label>
+            <select id="search_by" name="search_by">
+                <option value="name">Bnb name</option>
+                <option value="bnbid">Bnb ID</option>
+                <option value="location">Location</option>
+                <option value="cost">Cost</option>
+                <option value="maxsize">Maximum number of guests</option>
+            </select>
             <input type="submit" name="search" value="Search">
         </p>
         <!-- <label for="search_box">search here</label> -->
         </form>
+
     </body>
     <!-- guest check availability, name of bnb 
     display a table,  -->

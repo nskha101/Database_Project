@@ -1,31 +1,32 @@
 <! DOCTYPE html>
 <html>
 <body>
-    <form action="{{url_for('update_info')}}">
-    <p>Email <input type="email" name="email" placeholder="required" value="{{request.form.email}}"</p>
-    <p>First name <input type="text" name="fname" placeholder="required"></p>
-    <p>Middle name <input type="text" name="mname" placeholder="optional"></p>
-    <p>Last name <input type="text" name="lname" placeholder="required"></p>
-    <p>Language <input type="text" name="lang" placeholder="required"></p> <br>
-    <!-- <p></p> -->
-    <label for="gender">Gender </label>
-    <select name="gender" id="gender">
-        <option value="male">male</option>
-        <option value="female">female</option>
-        <option value="other">other</option>
-    </select>
-    <p>Government ID <input type="text" name="govid" placeholder="required"></p>
-    <p>Phone number <input type="tel" name="phonenum" placeholder="required"></p>
-    <p>Address Line 1 <input type="text" name="add1" placeholder="required"></p>
-    <p>Address Line 2 <input type="text" name="add2" placeholder="optional"></p>
-    <p>State/Province <input type="text" name="sp" placeholder="required"></p>
-    <p>Country <input type="text" name="country" placeholder="required"></p>
-    <p>Emergency contact number <input type="tel" name="econtact" placeholder="required"></p>
-    <p>Date of Birth <input type="text" name="dob" placeholder="yyyy-mm-dd"></p>
+    <form action="{{url_for('view_profile')}}", method="POST">
+        <p>Email <input type="email" name="email" placeholder="required" value="{{request.form.email}}"</p>
+        <p>First name <input type="text" name="first name" placeholder="required"></p>
+        <p>Middle name <input type="text" name="middle name" placeholder="optional"></p>
+        <p>Last name <input type="text" name="last name" placeholder="required"></p>
+        <p>Language <input type="text" name="language" placeholder="required"></p> <br>
+        <!-- <p></p> -->
+        <label for="gender">Gender </label>
+        <select name="gender" id="gender">
+            <option value="male">male</option>
+            <option value="female">female</option>
+            <option value="other">other</option>
+        </select>
+        <p>Government ID <input type="text" name="government id" placeholder="required"></p>
+        <p>Phone number <input type="tel" name="phone number" placeholder="required"></p>
+        <p>Address Line 1 <input type="text" name="address line1" placeholder="required"></p>
+        <p>Address Line 2 <input type="text" name="address line2" placeholder="optional"></p>
+        <p>State/Province <input type="text" name="state/province" placeholder="required"></p>
+        <p>Country <input type="text" name="country" placeholder="required"></p>
+        <p>Emergency contact number <input type="tel" name="emergency contact" placeholder="required"></p>
+        <p>Date of Birth <input type="text" name="date of birth" placeholder="yyyy-mm-dd"></p>
 
-    <input type="submit" name="update" value="update">
-    <!-- name,gender,phone,email,staylist,first name ,middle, lang,gov id, address ,emergency contact, dob , -->
+        <input type="submit" name="update" value="update">
+        <!-- name,gender,phone,email,staylist,first name ,middle, lang,gov id, address ,emergency contact, dob , -->
     </form>
+
 
 
 

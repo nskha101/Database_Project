@@ -127,7 +127,6 @@ def searchbnb(searchtype, searchparam):
     except (Exception) as error :
         print("exception - " , error)
 
-#if __name__ == "__main__":
+if __name__ == "__main__":
          #edithost("hosttest@test.com", "testchange", "test", "middle", "english", "Male", "123456", "1231231234", "doe doe doe st.", "123456789", "1920-01-01", "962", "1234", "1234")
-    #print(s
-    # earchbnb("location", "ottawa"))
+    # print(str(searchbnb("location", "ottawa")))

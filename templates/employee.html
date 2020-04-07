@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome admin page</title>
+    </head>
+    <body>
+        <h1>Welcome back, employee</h1>
+    <form action="">
+    <p>
+        my email
+        <input type="email" name='my email' placeholder="em@example.com">
+        <input type="submit" name="save" value="save">
+    </p>
+    </form>
+
+    <form action="{{url_for('search_result')}}">
+    
+        <p><input type="text" name="search_box" size="30px" placeholder="Search for an Airbnb by location"
+                name="Search_box">
+            <label for="search by">Search by:</label>
+    
+            <select id="search_by">
+                <option value="name">Bnb name</option>
+                <option value="bnbid">Bnb ID</option>
+                <option value="location">Location</option>
+                <option value="cost">Cost</option>
+                <option value="maxsize">Maximum number of guests</option>
+            </select>
+            <input type="submit" name="search" value="Search">
+    
+        </p>
+        <!-- <label for="search_box">search here</label> -->
+    </form>
+
+
+        
+
+
+    </body>
+
+
+
+</html>
