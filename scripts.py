@@ -33,6 +33,7 @@ def open_connection():
  
  except (Exception, psycopg2.Error) as error:
         print ("Error while connecting to PostgreSQL", error)
+        connection.rollback()
 #finally:
     #closing database connection.
    
@@ -45,7 +46,10 @@ def query(query):
         fetched = cursor.fetchall()
         return fetched
    except (Exception) as error:
+       connection.rollback()
        return error
+       
+
    
 
    cursor.close()
@@ -64,6 +68,8 @@ def uploadlisting(name, email, location, duration, maxsize, language, descriptio
         cursor.close()
     except (Exception, psycopg2.Error) as error :
         print("exception - " , error)
+        connection.rollback()
+
 
 def availability(name):
     cursor = connection.cursor()
@@ -102,6 +108,8 @@ def addhost(email, firstname, lastname, middlename, language, gender, govid, pho
        # anotherone(email, staylist, adventurelist, experiencelist)
     except (Exception) as error :
         print("exception - " , error)
+        connection.rollback()
+
 
 def edithost(email, firstname, lastname, middlename, language, gender, govid, phonenum, address, emergencycontact, dob, staylist, adventurelist, experiencelist):
     try:
@@ -116,6 +124,8 @@ def edithost(email, firstname, lastname, middlename, language, gender, govid, ph
 
     except (Exception) as error :
         print("exception - " , error)
+        connection.rollback()
+
 
 def searchbnb(searchtype, searchparam):
     try:
@@ -126,6 +136,8 @@ def searchbnb(searchtype, searchparam):
         return availability
     except (Exception) as error :
         print("exception - " , error)
+        connection.rollback()
+
 
 # if __name__ == "__main__":
          #edithost("hosttest@test.com", "testchange", "test", "middle", "english", "Male", "123456", "1231231234", "doe doe doe st.", "123456789", "1920-01-01", "962", "1234", "1234")
