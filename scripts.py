@@ -129,4 +129,5 @@ def searchbnb(searchtype, searchparam):
 
 #if __name__ == "__main__":
          #edithost("hosttest@test.com", "testchange", "test", "middle", "english", "Male", "123456", "1231231234", "doe doe doe st.", "123456789", "1920-01-01", "962", "1234", "1234")
-    #print(searchbnb("location", "ottawa"))
+    #print(s
+    # earchbnb("location", "ottawa"))
