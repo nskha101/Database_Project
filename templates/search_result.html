@@ -2,14 +2,23 @@
 
 <html>
     <body>
-        <table>
-            {% for key,value in result.items() %}
+        <table border="3">
             <tr>
-                <th>{{ key }}</th>
-                <td>{{ value }}</td>
-                
+                <td>
+                    <b>
+                    bnbID, host_email, name, location, duration, maxSize,
+                    language,
+                    description, rules, cost, available, contact, rental_type
+                    </b>
+                </td>
+            </tr>
+            {% if my_list != None and my_list != [] %}
+            {% for entry in my_list %}
+            <tr>
+                <td>{{ entry }}</td>
             </tr>
             {% endfor %}
+            {% endif %}
         </table>
     </body>
 </html>

@@ -10,24 +10,29 @@
 
 <body>
     <h1>Welcome back, host {{ name }}! </h1>
-    <form action="{{url_for('update_info')}}">
-
+    <!-- <form action="{{url_for('update_info')}}"> -->
+<!-- 
     <input type="submit" name="update profile" value="update profile">
 
     </form>
 
     <form action="{{url_for('view_profile')}}" method="POST">
     <input type="submit" name="my profile" value = "my profile">
-    </form>
+    </form> -->
 
     <form action="{{url_for('update_bnb')}}" method="POST">
     <input type="submit" name="update bnb" value="update bnb">
     </form>
 
-    <form action="{{url_for('view_bnbs')}}" method="POST">
+    <!-- <form action="{{url_for('view_bnbs')}}" method="POST">
         <input type="submit" name="my bnbs" value="my bnbs">
+    </form> -->
     </form>
-
+    <form action="{{url_for('login')}}">
+        <p>
+            <input type="submit" name='logout' value="logout">
+        </p>
+    </form>
 
 
 </body>

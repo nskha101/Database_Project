@@ -1,10 +1,10 @@
 <html>
 <!-- airbnb type -->
 
-<form action="{{url_for('host_name',name='host')}}" , method="POST">
-        <p>Property name <input type="text" name="property name" placeholder="testbnb"></p>
-        <p>Host<input type="text" name="host name" placeholder="required"></p>
-        <p>Maximum # of guests<input type="text" name="maxnumguests" placeholder="required"></p> <br>
+<form action="{{url_for('host_upload')}}" , method="POST">
+        <p>Property name <input type="text" name="property_name" placeholder="testbnb"></p>
+        <p>Host<input type="text" name="host" placeholder="required"></p>
+        <p>Maximum # of guests<input type="text" name="maxsize" placeholder="required"></p> <br>
         <label for="available">Available </label>
         <select name="available" id="available">
             <option value="Yes">Yes</option>
@@ -16,7 +16,7 @@
             <option value="private room">Private room</option>
             <option value="shared room">Shared room</option>
         </select><br>
-
+        <p>Language <input type="text" name="language" id="language" value="english"></p>
         <p>Email<input type="email" name="email" placeholder="required"></p>
         <p>Cost<input type="text" name="cost" placeholder="required"></p>
         <p>Location <input type="text" name="location" placeholder="required"></p>

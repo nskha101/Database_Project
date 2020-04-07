@@ -25,16 +25,23 @@
             <label for="search_by">Search by:</label>
             <select id="search_by" name="search_by">
                 <option value="name">Bnb name</option>
-                <option value="bnbid">Bnb ID</option>
+                
                 <option value="location">Location</option>
                 <option value="cost">Cost</option>
+                <option value="availability">Available</option>
+                <option value="duration">duration</option>
                 <option value="maxsize">Maximum number of guests</option>
             </select>
             <input type="submit" name="search" value="Search">
         </p>
         <!-- <label for="search_box">search here</label> -->
         </form>
-
+        <form action="{{url_for('login')}}">
+        <p>
+        <input type="submit" name='logout' value="logout">
+        </p>
+        </form>
+        
     </body>
     <!-- guest check availability, name of bnb 
     display a table,  -->

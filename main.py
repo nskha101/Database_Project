@@ -47,32 +47,53 @@ def view_profile():
    except Exception as e:
       return "please update your profile first"
 
-
-
 @app.route('/update_info')
 def update_info():
    return render_template("host_info.html")
 
-@app.route('/update_bnb')
+@app.route('/update_bnb',methods=['POST'])
 def update_bnb():
    return render_template('host_upload.html')
+
+@app.route('/host_upload',methods=['POST'])
+def host_upload():
+   name = request.form['property_name']
+   email = request.form['email']
+   location = request.form['location']
+   duration = request.form['duration']
+   maxsize = request.form['maxsize']
+   language = request.form['language']
+   description = request.form['description']
+   rentaltype = request.form['type']
+   rules = request.form['rules']
+   cost = request.form['cost']
+   availability = request.form['available']
+   contact = request.form['host']
+   uploadlisting(name, email, location, duration, maxsize, language, description, rentaltype, rules, cost, availability, contact)
+   return render_template('host.html')
 
 @app.route('/guest/<name>')
 def guest_name(name):
    return render_template('guest.html', name=name)
 
+@app.route('/occupancy_rate',methods=['POST'])
+def occupancy_rate():
+   bid = str(request.form['bnbid'])
+   return occupancyrate(bid)
 
 @app.route('/employee/<name>')
 def employee_name(name):
    return render_template('employee.html',name=name)
 
+# contact jeff
+
 @app.route('/search_result' , methods=['POST','GET'])
 def search_result():
-   # 
+    
    search_param = request.form['search_box']
    search_type = request.form['search_by']
-
-   return str(searchbnb(search_type,search_param))
+   res = searchbnb(search_type,search_param)
+   return render_template('search_result.html',my_list=res)
 
 @app.route('/login',methods = ['POST','GET'])
 def login():

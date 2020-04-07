@@ -9,30 +9,49 @@
         <h1>Welcome back, employee</h1>
     <form action="">
     <p>
-        my email
+        My email
         <input type="email" name='my email' placeholder="em@example.com">
         <input type="submit" name="save" value="save">
     </p>
     </form>
 
-    <form action="{{url_for('search_result')}}">
+<form action="{{url_for('search_result')}}" method="POST">
+
+    <p>
+        <input type="text" name="search_box" size="30px" placeholder="Search for an Airbnb ">
+        <label for="search_by">Search by:</label>
+        <select id="search_by" name="search_by">
+            <option value="name">Bnb name</option>
+            <option value="bnbid">Bnb ID</option>
+            <option value="location">Location</option>
+            <option value="cost">Cost</option>
+            
+            <option value="availability">Available</option>
+
+            <option value="contact">Host</option>
+            <option value="duration">Duration</option>
+            <option value="maxsize">Maximum number of guests</option>
+        </select>
+        <input type="submit" name="search" value="Search">
+    </p>
     
-        <p><input type="text" name="search_box" size="30px" placeholder="Search for an Airbnb by location"
-                name="Search_box">
-            <label for="search by">Search by:</label>
-    
-            <select id="search_by">
-                <option value="name">Bnb name</option>
-                <option value="bnbid">Bnb ID</option>
-                <option value="location">Location</option>
-                <option value="cost">Cost</option>
-                <option value="maxsize">Maximum number of guests</option>
-            </select>
-            <input type="submit" name="search" value="Search">
-    
-        </p>
-        <!-- <label for="search_box">search here</label> -->
-    </form>
+</form>
+<form action="{{url_for('occupancy_rate')}}" method='POST'>
+    <p>
+    Occupancy rate
+    <input type="text" name='bnbid' placeholder="bnbid here">
+    <input type="submit" name="calculate" value="Calculate">
+    </p>
+ 
+
+</form>
+
+</form>
+<form action="{{url_for('login')}}">
+    <p>
+        <input type="submit" name='logout' value="logout">
+    </p>
+</form>
 
 
         
