@@ -22,7 +22,6 @@ connection = psycopg2.connect(**config)
 def open_connection():
 
  try:
-
    cursor = connection.cursor()
    # Print PostgreSQL Connection properties
    print ( connection.get_dsn_parameters(),"\n")
@@ -52,7 +51,7 @@ def query(query):
    cursor.close()
    
 
-def uploadlisting(name, email, location, duration, maxsize, language, description, rules, cost, availability, contact):
+def uploadlisting(name, email, location, duration, maxsize, language, description, rentaltype, rules, cost, availability, contact):
     #test query, note the type values. uploadlisting("testbnb", "test@test.com", "ottawa", 365, 2, "english", "fun place", "no pets", "300", True, "jeff")
 
     try:
@@ -60,7 +59,7 @@ def uploadlisting(name, email, location, duration, maxsize, language, descriptio
         connection.cursor().execute("SET SCHEMA '{}'".format('airbnb'))
         bnbid=random.randint(1,10000)
         print(bnbid)
-        cursor.execute("INSERT INTO bnb (bnbid, email, name, location, duration, maxsize, Language, description, rules, cost, availability, contact) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (bnbid, email, name, location, duration, maxsize, [language], description, rules, cost, availability, contact))
+        cursor.execute("INSERT INTO bnb (bnbid, email, name, location, duration, maxsize, Language, description, rentaltype, rules, cost, availability, contact) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (bnbid, email, name, location, duration, maxsize, [language], description, rentaltype, rules, cost, availability, contact))
         connection.commit()
         cursor.close()
     except (Exception, psycopg2.Error) as error :
@@ -91,3 +90,43 @@ def close():
       connection.close()
       print("PostgreSQL connection is closed")
 
+def addhost(email, firstname, lastname, middlename, language, gender, govid, phonenum, address, emergencycontact, dob, staylist, adventurelist, experiencelist):
+    try:   
+        cursor = connection.cursor()
+        connection.cursor().execute("SET SCHEMA '{}'".format('airbnb'))
+        cursor.execute("INSERT INTO person (email, firstname, lastname, middlename, language, gender, govid, phonenum, address, emergencycontact, dob) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (email, firstname, lastname, middlename, [language], gender, govid, phonenum, address, emergencycontact, dob) )
+        cursor.execute("INSERT INTO host (email, staylist, adventurelist, experiencelist) VALUES (%s, %s, %s, %s)", (email,[staylist],[adventurelist],[experiencelist]))
+        connection.commit()
+        cursor.close()
+        
+       # anotherone(email, staylist, adventurelist, experiencelist)
+    except (Exception) as error :
+        print("exception - " , error)
+
+def edithost(email, firstname, lastname, middlename, language, gender, govid, phonenum, address, emergencycontact, dob, staylist, adventurelist, experiencelist):
+    try:
+        cursor = connection.cursor()
+        connection.cursor().execute("SET SCHEMA '{}'".format('airbnb'))
+        cursor.execute("DELETE FROM host WHERE email = '{}'".format(email))
+        cursor.execute("DELETE FROM person WHERE email = '{}'".format(email))
+        cursor.execute("INSERT INTO person (email, firstname, lastname, middlename, language, gender, govid, phonenum, address, emergencycontact, dob) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (email, firstname, lastname, middlename, [language], gender, govid, phonenum, address, emergencycontact, dob) )
+        cursor.execute("INSERT INTO host (email, staylist, adventurelist, experiencelist) VALUES (%s, %s, %s, %s)", (email,[staylist],[adventurelist],[experiencelist]))
+        connection.commit()
+        cursor.close()
+
+    except (Exception) as error :
+        print("exception - " , error)
+
+def searchbnb(searchtype, searchparam):
+    try:
+        cursor = connection.cursor()
+        connection.cursor().execute("SET SCHEMA '{}'".format('airbnb'))
+        cursor.execute("SELECT * FROM BNB WHERE {} = '{}'".format(searchtype, searchparam))
+        availability = cursor.fetchall()
+        return availability
+    except (Exception) as error :
+        print("exception - " , error)
+
+if __name__ == "__main__":
+        #edithost("hosttest@test.com", "testchange", "test", "middle", "english", "Male", "123456", "1231231234", "doe doe doe st.", "123456789", "1920-01-01", "962", "1234", "1234")
+        print(searchbnb("location", "markham"))
